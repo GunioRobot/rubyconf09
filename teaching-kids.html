@@ -122,7 +122,7 @@ ul {
 .code .vi { color: #008080 } /* Name.Variable.Instance */
 .code .il { color: #009999 } /* Literal.Number.Integer.Long */
     </style>
-    
+
     <script type="text/javascript">
       /*!
  * jQuery JavaScript Library v1.3.2
@@ -137,7 +137,7 @@ ul {
  */
 (function(){
 
-var 
+var
 	// Will speed up references to window, and allows munging its name.
 	window = this,
 	// Will speed up references to undefined, and allows munging its name.
@@ -533,13 +533,13 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	val: function( value ) {
-		if ( value === undefined ) {			
+		if ( value === undefined ) {
 			var elem = this[0];
 
 			if ( elem ) {
 				if( jQuery.nodeName( elem, 'option' ) )
 					return (elem.attributes.value || {}).specified ? elem.value : elem.text;
-				
+
 				// We need to handle select boxes special
 				if ( jQuery.nodeName( elem, "select" ) ) {
 					var index = elem.selectedIndex,
@@ -568,7 +568,7 @@ jQuery.fn = jQuery.prototype = {
 						}
 					}
 
-					return values;				
+					return values;
 				}
 
 				// Everything else, we just grab the value
@@ -647,13 +647,13 @@ jQuery.fn = jQuery.prototype = {
 				for ( var i = 0, l = this.length; i < l; i++ )
 					callback.call( root(this[i], first), this.length > 1 || i > 0 ?
 							fragment.cloneNode(true) : fragment );
-		
+
 			if ( scripts )
 				jQuery.each( scripts, evalScript );
 		}
 
 		return this;
-		
+
 		function root( elem, cur ) {
 			return table && jQuery.nodeName(elem, "table") && jQuery.nodeName(cur, "tr") ?
 				(elem.getElementsByTagName("tbody")[0] ||
@@ -720,7 +720,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 				// Recurse if we're merging object values
 				if ( deep && copy && typeof copy === "object" && !copy.nodeType )
-					target[ name ] = jQuery.extend( deep, 
+					target[ name ] = jQuery.extend( deep,
 						// Never move original objects, clone them
 						src || ( copy.length != null ? [ ] : { } )
 					, copy );
@@ -1062,7 +1062,7 @@ jQuery.extend({
 				// IE completely kills leading whitespace when innerHTML is used
 				if ( !jQuery.support.leadingWhitespace && /^\s/.test( elem ) )
 					div.insertBefore( context.createTextNode( elem.match(/^\s*/)[0] ), div.firstChild );
-				
+
 				elem = jQuery.makeArray( div.childNodes );
 			}
 
@@ -1083,7 +1083,7 @@ jQuery.extend({
 					fragment.appendChild( ret[i] );
 				}
 			}
-			
+
 			return scripts;
 		}
 
@@ -1464,16 +1464,16 @@ jQuery.extend({
 	},
 	queue: function( elem, type, data ) {
 		if ( elem ){
-	
+
 			type = (type || "fx") + "queue";
-	
+
 			var q = jQuery.data( elem, type );
-	
+
 			if ( !q || jQuery.isArray(data) )
 				q = jQuery.data( elem, type, jQuery.makeArray(data) );
 			else if( data )
 				q.push( data );
-	
+
 		}
 		return q;
 	},
@@ -1481,10 +1481,10 @@ jQuery.extend({
 	dequeue: function( elem, type ){
 		var queue = jQuery.queue( elem, type ),
 			fn = queue.shift();
-		
+
 		if( !type || type === "fx" )
 			fn = queue[0];
-			
+
 		if( fn !== undefined )
 			fn.call(elem);
 	}
@@ -1526,7 +1526,7 @@ jQuery.fn.extend({
 
 		return this.each(function(){
 			var queue = jQuery.queue( this, type, data );
-			
+
 			 if( type == "fx" && queue.length == 1 )
 				queue[0].call(this);
 		});
@@ -1554,19 +1554,19 @@ var Sizzle = function(selector, context, results, seed) {
 
 	if ( context.nodeType !== 1 && context.nodeType !== 9 )
 		return [];
-	
+
 	if ( !selector || typeof selector !== "string" ) {
 		return results;
 	}
 
 	var parts = [], m, set, checkSet, check, mode, extra, prune = true;
-	
+
 	// Reset the position of the chunker regexp (start from head)
 	chunker.lastIndex = 0;
-	
+
 	while ( (m = chunker.exec(selector)) !== null ) {
 		parts.push( m[1] );
-		
+
 		if ( m[2] ) {
 			extra = RegExp.rightContext;
 			break;
@@ -1680,7 +1680,7 @@ Sizzle.find = function(expr, context, isXML){
 
 	for ( var i = 0, l = Expr.order.length; i < l; i++ ) {
 		var type = Expr.order[i], match;
-		
+
 		if ( (match = Expr.match[ type ].exec( expr )) ) {
 			var left = RegExp.leftContext;
 
@@ -1942,7 +1942,7 @@ var Expr = Sizzle.selectors = {
 		},
 		ATTR: function(match, curLoop, inplace, result, not, isXML){
 			var name = match[1].replace(/\\/g, "");
-			
+
 			if ( !isXML && Expr.attrMap[name] ) {
 				match[1] = Expr.attrMap[name];
 			}
@@ -1968,7 +1968,7 @@ var Expr = Sizzle.selectors = {
 			} else if ( Expr.match.POS.test( match[0] ) || Expr.match.CHILD.test( match[0] ) ) {
 				return true;
 			}
-			
+
 			return match;
 		},
 		POS: function(match){
@@ -2102,20 +2102,20 @@ var Expr = Sizzle.selectors = {
 					if ( first == 1 && last == 0 ) {
 						return true;
 					}
-					
+
 					var doneName = match[0],
 						parent = elem.parentNode;
-	
+
 					if ( parent && (parent.sizcache !== doneName || !elem.nodeIndex) ) {
 						var count = 0;
 						for ( node = parent.firstChild; node; node = node.nextSibling ) {
 							if ( node.nodeType === 1 ) {
 								node.nodeIndex = ++count;
 							}
-						} 
+						}
 						parent.sizcache = doneName;
 					}
-					
+
 					var diff = elem.nodeIndex - last;
 					if ( first == 0 ) {
 						return diff == 0;
@@ -2188,7 +2188,7 @@ var makeArray = function(array, results) {
 		results.push.apply( results, array );
 		return results;
 	}
-	
+
 	return array;
 };
 
@@ -2333,7 +2333,7 @@ if ( document.querySelectorAll ) (function(){
 	if ( div.querySelectorAll && div.querySelectorAll(".TEST").length === 0 ) {
 		return;
 	}
-	
+
 	Sizzle = function(query, context, extra, seed){
 		context = context || document;
 
@@ -2344,7 +2344,7 @@ if ( document.querySelectorAll ) (function(){
 				return makeArray( context.querySelectorAll(query), extra );
 			} catch(e){}
 		}
-		
+
 		return oldSizzle(query, context, extra, seed);
 	};
 
@@ -2609,7 +2609,7 @@ jQuery.event = {
 
 			// Get the current list of functions bound to this event
 			var handlers = events[type];
-			
+
 			if ( jQuery.event.specialAll[type] )
 				jQuery.event.specialAll[type].setup.call(elem, data, namespaces);
 
@@ -2682,7 +2682,7 @@ jQuery.event = {
 								// Handle the removal of namespaced events
 								if ( namespace.test(events[type][handle].type) )
 									delete events[type][handle];
-									
+
 						if ( jQuery.event.specialAll[type] )
 							jQuery.event.specialAll[type].teardown.call(elem, namespaces);
 
@@ -2749,11 +2749,11 @@ jQuery.event = {
 			// don't do events on text and comment nodes
 			if ( !elem || elem.nodeType == 3 || elem.nodeType == 8 )
 				return undefined;
-			
+
 			// Clean up in case it is reused
 			event.result = undefined;
 			event.target = elem;
-			
+
 			// Clone the incoming data, if any
 			data = jQuery.makeArray(data);
 			data.unshift( event );
@@ -2794,14 +2794,14 @@ jQuery.event = {
 
 		event = arguments[0] = jQuery.event.fix( event || window.event );
 		event.currentTarget = this;
-		
+
 		// Namespaced event handlers
 		var namespaces = event.type.split(".");
 		event.type = namespaces.shift();
 
 		// Cache this now, all = true means, any handler
 		all = !namespaces.length && !event.exclusive;
-		
+
 		var namespace = RegExp("(^|\\.)" + namespaces.slice().sort().join(".*\\.") + "(\\.|$)");
 
 		handlers = ( jQuery.data(this, "events") || {} )[event.type];
@@ -2899,7 +2899,7 @@ jQuery.event = {
 			teardown: function() {}
 		}
 	},
-	
+
 	specialAll: {
 		live: {
 			setup: function( selector, namespaces ){
@@ -2908,12 +2908,12 @@ jQuery.event = {
 			teardown:  function( namespaces ){
 				if ( namespaces.length ) {
 					var remove = 0, name = RegExp("(^|\\.)" + namespaces[0] + "(\\.|$)");
-					
+
 					jQuery.each( (jQuery.data(this, "events").live || {}), function(){
 						if ( name.test(this.type) )
 							remove++;
 					});
-					
+
 					if ( remove < 1 )
 						jQuery.event.remove( this, namespaces[0], liveHandler );
 				}
@@ -2926,7 +2926,7 @@ jQuery.Event = function( src ){
 	// Allow instantiation without the 'new' keyword
 	if( !this.preventDefault )
 		return new jQuery.Event(src);
-	
+
 	// Event object
 	if( src && src.type ){
 		this.originalEvent = src;
@@ -2938,7 +2938,7 @@ jQuery.Event = function( src ){
 	// timeStamp is buggy for some events on Firefox(#3843)
 	// So we won't rely on the native value
 	this.timeStamp = now();
-	
+
 	// Mark it as fixed
 	this[expando] = true;
 };
@@ -2994,7 +2994,7 @@ var withinElement = function(event) {
 	while ( parent && parent != this )
 		try { parent = parent.parentNode; }
 		catch(e) { parent = this; }
-	
+
 	if( parent != this ){
 		// set the correct event type
 		event.type = event.data;
@@ -3002,9 +3002,9 @@ var withinElement = function(event) {
 		jQuery.event.handle.apply( this, arguments );
 	}
 };
-	
-jQuery.each({ 
-	mouseover: 'mouseenter', 
+
+jQuery.each({
+	mouseover: 'mouseenter',
 	mouseout: 'mouseleave'
 }, function( orig, fix ){
 	jQuery.event.special[ fix ] = {
@@ -3014,7 +3014,7 @@ jQuery.each({
 		teardown: function(){
 			jQuery.event.remove( this, orig, withinElement );
 		}
-	};			   
+	};
 });
 
 jQuery.fn.extend({
@@ -3053,7 +3053,7 @@ jQuery.fn.extend({
 			event.stopPropagation();
 			jQuery.event.trigger( event, data, this[0] );
 			return event.result;
-		}		
+		}
 	},
 
 	toggle: function( fn ) {
@@ -3096,7 +3096,7 @@ jQuery.fn.extend({
 
 		return this;
 	},
-	
+
 	live: function( type, fn ){
 		var proxy = jQuery.event.proxy( fn );
 		proxy.guid += this.selector + type;
@@ -3105,7 +3105,7 @@ jQuery.fn.extend({
 
 		return this;
 	},
-	
+
 	die: function( type, fn ){
 		jQuery(document).unbind( liveConvert(type, this.selector), fn ? { guid: fn.guid + this.selector + type } : null );
 		return this;
@@ -3128,7 +3128,7 @@ function liveHandler( event ){
 	elems.sort(function(a,b) {
 		return jQuery.data(a.elem, "closest") - jQuery.data(b.elem, "closest");
 	});
-	
+
 	jQuery.each(elems, function(){
 		if ( this.fn.call(this.elem, event, this.fn.data) === false )
 			return (stop = false);
@@ -3229,12 +3229,12 @@ jQuery.each( ("blur,focus,load,resize,scroll,unload,click,dblclick," +
 // Prevent memory leaks in IE
 // And prevent errors on refresh with events like mouseover in other browsers
 // Window isn't included so as not to unbind existing unload events
-jQuery( window ).bind( 'unload', function(){ 
+jQuery( window ).bind( 'unload', function(){
 	for ( var id in jQuery.cache )
 		// Skip the window
 		if ( id != 1 && jQuery.cache[ id ].handle )
 			jQuery.event.remove( jQuery.cache[ id ].handle.elem );
-}); 
+});
 (function(){
 
 	jQuery.support = {};
@@ -3258,32 +3258,32 @@ jQuery( window ).bind( 'unload', function(){
 	jQuery.support = {
 		// IE strips leading whitespace when .innerHTML is used
 		leadingWhitespace: div.firstChild.nodeType == 3,
-		
+
 		// Make sure that tbody elements aren't automatically inserted
 		// IE will insert them into empty tables
 		tbody: !div.getElementsByTagName("tbody").length,
-		
+
 		// Make sure that you can get all elements in an <object> element
 		// IE 7 always returns no results
 		objectAll: !!div.getElementsByTagName("object")[0]
 			.getElementsByTagName("*").length,
-		
+
 		// Make sure that link elements get serialized correctly by innerHTML
 		// This requires a wrapper element in IE
 		htmlSerialize: !!div.getElementsByTagName("link").length,
-		
+
 		// Get the style information from getAttribute
 		// (IE uses .cssText insted)
 		style: /red/.test( a.getAttribute("style") ),
-		
+
 		// Make sure that URLs aren't manipulated
 		// (IE normalizes it by default)
 		hrefNormalized: a.getAttribute("href") === "/a",
-		
+
 		// Make sure that element opacity exists
 		// (IE uses filter instead)
 		opacity: a.style.opacity === "0.5",
-		
+
 		// Verify style float existence
 		// (IE uses styleFloat instead of cssFloat)
 		cssFloat: !!a.style.cssFloat,
@@ -3293,14 +3293,14 @@ jQuery( window ).bind( 'unload', function(){
 		noCloneEvent: true,
 		boxModel: null
 	};
-	
+
 	script.type = "text/javascript";
 	try {
 		script.appendChild( document.createTextNode( "window." + id + "=1;" ) );
 	} catch(e){}
 
 	root.insertBefore( script, root.firstChild );
-	
+
 	// Make sure that the execution of code works by injecting a script
 	// tag with appendChild/createTextNode
 	// (IE doesn't support this, fails, and uses .text instead)
@@ -3444,7 +3444,7 @@ jQuery.each( "ajaxStart,ajaxStop,ajaxComplete,ajaxError,ajaxSuccess,ajaxSend".sp
 var jsc = now();
 
 jQuery.extend({
-  
+
 	get: function( url, data, callback, type ) {
 		// shift arguments if data argument was ommited
 		if ( jQuery.isFunction( data ) ) {
@@ -3833,7 +3833,7 @@ jQuery.extend({
 
 		if ( xml && data.documentElement.tagName == "parsererror" )
 			throw "parsererror";
-			
+
 		// Allow a pre-filtering function to sanitize the response
 		// s != null is checked to keep backwards compatibility
 		if( s && s.dataFilter )
@@ -3850,7 +3850,7 @@ jQuery.extend({
 			if ( type == "json" )
 				data = window["eval"]("(" + data + ")");
 		}
-		
+
 		return data;
 	},
 
@@ -3914,26 +3914,26 @@ jQuery.fn.extend({
 		} else {
 			for ( var i = 0, l = this.length; i < l; i++ ){
 				var old = jQuery.data(this[i], "olddisplay");
-				
+
 				this[i].style.display = old || "";
-				
+
 				if ( jQuery.css(this[i], "display") === "none" ) {
 					var tagName = this[i].tagName, display;
-					
+
 					if ( elemdisplay[ tagName ] ) {
 						display = elemdisplay[ tagName ];
 					} else {
 						var elem = jQuery("<" + tagName + " />").appendTo("body");
-						
+
 						display = elem.css("display");
 						if ( display === "none" )
 							display = "block";
-						
+
 						elem.remove();
-						
+
 						elemdisplay[ tagName ] = display;
 					}
-					
+
 					jQuery.data(this[i], "olddisplay", display);
 				}
 			}
@@ -3943,7 +3943,7 @@ jQuery.fn.extend({
 			for ( var i = 0, l = this.length; i < l; i++ ){
 				this[i].style.display = jQuery.data(this[i], "olddisplay") || "";
 			}
-			
+
 			return this;
 		}
 	},
@@ -3992,11 +3992,11 @@ jQuery.fn.extend({
 		var optall = jQuery.speed(speed, easing, callback);
 
 		return this[ optall.queue === false ? "each" : "queue" ](function(){
-		
+
 			var opt = jQuery.extend({}, optall), p,
 				hidden = this.nodeType == 1 && jQuery(this).is(":hidden"),
 				self = this;
-	
+
 			for ( p in prop ) {
 				if ( prop[p] == "hide" && hidden || prop[p] == "show" && !hidden )
 					return opt.complete.call(this);
@@ -4251,7 +4251,7 @@ jQuery.fx.prototype = {
 				if ( this.options.hide || this.options.show )
 					for ( var p in this.options.curAnim )
 						jQuery.attr(this.elem.style, p, this.options.orig[p]);
-					
+
 				// Execute the complete function
 				this.options.complete.call( this.elem );
 			}
@@ -4305,7 +4305,7 @@ if ( document.documentElement["getBoundingClientRect"] )
 			left = box.left + (self.pageXOffset || jQuery.boxModel && docElem.scrollLeft || body.scrollLeft) - clientLeft;
 		return { top: top, left: left };
 	};
-else 
+else
 	jQuery.fn.offset = function() {
 		if ( !this[0] ) return { top: 0, left: 0 };
 		if ( this[0] === this[0].ownerDocument.body ) return jQuery.offset.bodyOffset( this[0] );
@@ -4395,7 +4395,7 @@ jQuery.fn.extend({
 			parentOffset = /^body|html$/i.test(offsetParent[0].tagName) ? { top: 0, left: 0 } : offsetParent.offset();
 
 			// Subtract element margins
-			// note: when an element has margin: auto the offsetLeft and marginLeft 
+			// note: when an element has margin: auto the offsetLeft and marginLeft
 			// are the same in Safari causing offset.left to incorrectly be 0
 			offset.top  -= num( this, 'marginTop'  );
 			offset.left -= num( this, 'marginLeft' );
@@ -4426,7 +4426,7 @@ jQuery.fn.extend({
 // Create scrollLeft and scrollTop methods
 jQuery.each( ['Left', 'Top'], function(i, name) {
 	var method = 'scroll' + name;
-	
+
 	jQuery.fn[ method ] = function(val) {
 		if (!this[0]) return null;
 
@@ -4470,7 +4470,7 @@ jQuery.each([ "Height", "Width" ], function(i, name){
 			jQuery.css( this[0], lower, false, margin ? "margin" : "border" ) :
 			null;
 	};
-	
+
 	var type = name.toLowerCase();
 
 	jQuery.fn[ type ] = function( size ) {
@@ -4510,33 +4510,33 @@ jQuery.each([ "Height", "Width" ], function(i, name){
  * to offer multiple easing options
  *
  * TERMS OF USE - jQuery Easing
- * 
- * Open source under the BSD License. 
- * 
+ *
+ * Open source under the BSD License.
+ *
  * Copyright Â© 2008 George McGinley Smith
  * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification, 
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
- * Redistributions of source code must retain the above copyright notice, this list of 
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of
  * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list 
- * of conditions and the following disclaimer in the documentation and/or other materials 
+ * Redistributions in binary form must reproduce the above copyright notice, this list
+ * of conditions and the following disclaimer in the documentation and/or other materials
  * provided with the distribution.
- * 
- * Neither the name of the author nor the names of contributors may be used to endorse 
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse
  * or promote products derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
  *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 */
 
@@ -4652,7 +4652,7 @@ jQuery.extend( jQuery.easing,
 		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
 	},
 	easeInOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158; 
+		if (s == undefined) s = 1.70158;
 		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
 		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
 	},
@@ -4679,40 +4679,40 @@ jQuery.extend( jQuery.easing,
 /*
  *
  * TERMS OF USE - EASING EQUATIONS
- * 
- * Open source under the BSD License. 
- * 
+ *
+ * Open source under the BSD License.
+ *
  * Copyright Â© 2001 Robert Penner
  * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification, 
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
- * Redistributions of source code must retain the above copyright notice, this list of 
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of
  * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list 
- * of conditions and the following disclaimer in the documentation and/or other materials 
+ * Redistributions in binary form must reproduce the above copyright notice, this list
+ * of conditions and the following disclaimer in the documentation and/or other materials
  * provided with the distribution.
- * 
- * Neither the name of the author nor the names of contributors may be used to endorse 
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse
  * or promote products derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
  *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
     </script>
     <script type="text/javascript" charset="utf-8">
       (function($) {
   var currentHash = document.location.hash;
-  
+
   var checkHash = function checkAgain() {
     var newHash = document.location.hash;
     if (currentHash != newHash) {
@@ -4733,43 +4733,43 @@ jQuery.extend( jQuery.easing,
   var allSlides = function() {
     return $('#slides #track > div');
   }
-  
+
   var slideDimensions = function() {
     return {
       width: $(window).width(),
       height: $(window).height()
     }
   }
-  
+
   var getIndex = function() {
     var index = document.location.hash.split('#')[1];
     return Number(index);
   }
-  
+
   var setIndex = function(idx) {
     var newSlide = '#slide-' + idx;
     if ($(newSlide).size() < 1) { return false; }
     document.location.hash = '#' + idx;
   }
-  
+
   var setSlideDimensions = function() {
     var dimensions = slideDimensions();
-    
+
     $('#slides').height(dimensions.height);
     $('#slides').width(dimensions.width);
-    
+
     allSlides().height(dimensions.height);
     allSlides().width(dimensions.width);
   }
-  
+
   var showCurrentSlide = function() {
     var dimensions = slideDimensions();
     var index = getIndex();
     var offset = (index || 0) * dimensions.width;
-    
+
     $('#track').animate({ marginLeft: '-' + offset + 'px' }, 200);
   }
-  
+
   var verticalAlign = function() {
     var dimensions = slideDimensions();
     var margin = (dimensions.height - $(this).height()) / 2;
@@ -4783,19 +4783,19 @@ jQuery.extend( jQuery.easing,
       overflow: 'hidden',
       fontSize: '26px'
     });
-    
+
     allSlides().find('.content').each(verticalAlign);
   }
-  
+
   var adjustSlides = function() {
     var dimensions = slideDimensions();
-    
+
     setSlideDimensions();
     showCurrentSlide();
 
     formatGist();
   }
-  
+
   var move = function(event) {
     var DIRECTIONS = {
       37: -1, // ARROW LEFT
@@ -4805,12 +4805,12 @@ jQuery.extend( jQuery.easing,
       left: -1,
       right: 1
     }
-    
+
     if (dir = DIRECTIONS[event.which || event]) {
       setIndex(getIndex() + dir);
     }
   }
-  
+
   function clickMove(e) {
     if (e.pageX < ($(window).width() / 2)) {
       move('left');
@@ -4818,7 +4818,7 @@ jQuery.extend( jQuery.easing,
       move('right');
     }
   }
-  
+
   $(window).bind('resize', function() { adjustSlides(); });
   $(document).bind('keydown', move);
   $(document).bind('hash.changed', adjustSlides);
@@ -4832,61 +4832,61 @@ jQuery.extend( jQuery.easing,
   });
 })(jQuery);
     </script>
-    
+
   </head>
   <body>
     <div id="slides">
       <div id="track">
-        
+
           <div class=" ">
             <div id="slide-0" class="content">
               <h2>Teaching <font color="red">Ruby</font> To Kids</h2><h5>&nbsp;</h5><h5>Sarah Mei</h5><h5>&nbsp;</h5><h5>@sarahmei</h5><h5>sarahmei@gmail.com</h5>
             </div>
           </div>
-        
+
           <div class=" ">
             <div id="slide-1" class="content">
               <h2>Expanding Young Minds With <font color="red">Ruby</font>
 </h2><h5>&nbsp;</h5><h5>Sarah Mei</h5><h5>&nbsp;</h5><h5>@sarahmei</h5><h5>sarahmei@gmail.com</h5>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-2" class="content">
               <h2>About me</h2>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-3" class="content">
               <h2>GetSET</h2>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-4" class="content">
               <p><img src="img/shoes_logo.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-5" class="content">
               <h2>Philosophy</h2>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-6" class="content">
               <h2>Programming and Language</h2>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-7" class="content">
               <h2>Setup</h2>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-8" class="content">
               <pre><code>
@@ -4896,13 +4896,13 @@ end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-9" class="content">
               <p><img src="img/step0.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-10" class="content">
               <pre><code>
@@ -4912,13 +4912,13 @@ end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-11" class="content">
               <p><img src="img/step1.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-12" class="content">
               <pre><code>
@@ -4929,13 +4929,13 @@ end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-13" class="content">
               <p><img src="img/step2.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-14" class="content">
               <pre><code>
@@ -4946,13 +4946,13 @@ end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-15" class="content">
               <p><img src="img/step3.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-16" class="content">
               <pre><code>
@@ -4964,13 +4964,13 @@ end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-17" class="content">
               <p><img src="img/step4.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-18" class="content">
               <pre><code>
@@ -4983,13 +4983,13 @@ end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-19" class="content">
               <p><img src="img/step5.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-20" class="content">
               <pre><code>
@@ -4999,25 +4999,25 @@ Shoes.app :title =&gt; "My awesome application" do
   end</span>
   background <span class="changedcode">periwinkle</span>
   para "Hello, world", :align =&gt; "center",
-    :size =&gt; "xx-large", 
+    :size =&gt; "xx-large",
     :stroke =&gt; saddlebrown
 end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-21" class="content">
               <p><img src="img/shoes-colors.jpg"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-22" class="content">
               <p><img src="img/step6.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-23" class="content">
               <pre><code>
@@ -5032,20 +5032,20 @@ Shoes.app :title =&gt; "My awesome application" do
   end</span>
 
   <span class="changedcode">@headline</span> = para "Hello, world",
-    :align =&gt; "center", 
-    :size =&gt; "xx-large", 
+    :align =&gt; "center",
+    :size =&gt; "xx-large",
     :stroke =&gt; saddlebrown
 end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-24" class="content">
               <p><img src="img/step7.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-25" class="content">
               <pre><code>
@@ -5055,27 +5055,27 @@ Shoes.app :title =&gt; "My awesome application" do
   end
   background periwinkle
 
-  <span class="changedcode">animate do 
+  <span class="changedcode">animate do
     @button, @left, @top = self.mouse</span>
     @headline.text =
       <span class="changedcode">"#{@button} #{@left} #{@top}"</span>
   end
 
   @headline = para "Hello, world",
-    :align =&gt; "center", 
-    :size =&gt; "xx-large", 
+    :align =&gt; "center",
+    :size =&gt; "xx-large",
     :stroke =&gt; saddlebrown
 end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-26" class="content">
               <p><img src="img/step8.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-27" class="content">
               <pre><code>
@@ -5085,26 +5085,26 @@ Shoes.app :title =&gt; "My awesome application" do
   end
   background periwinkle
 
-  animate do 
+  animate do
     @button, @left, @top = self.mouse
     <span class="changedcode">line 0, 0, @left, @top</span>
   end
 
   @headline = para "<span class="changedcode">Draw!</span>",
-    :align =&gt; "center", 
-    :size =&gt; "xx-large", 
+    :align =&gt; "center",
+    :size =&gt; "xx-large",
     :stroke =&gt; saddlebrown
 end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-28" class="content">
               <p><img src="img/step9.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-29" class="content">
               <pre><code>
@@ -5114,7 +5114,7 @@ Shoes.app :title =&gt; "My awesome application" do
   end
   background periwinkle
 
-  animate do 
+  animate do
     @button, @left, @top = self.mouse
     <span class="changedcode">unless @button == 0
       line 0, 0, @left, @top
@@ -5122,20 +5122,20 @@ Shoes.app :title =&gt; "My awesome application" do
   end
 
   @headline = para "Draw!",
-    :align =&gt; "center", 
-    :size =&gt; "xx-large", 
+    :align =&gt; "center",
+    :size =&gt; "xx-large",
     :stroke =&gt; saddlebrown
 end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-30" class="content">
               <p><img src="img/step10.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-31" class="content">
               <pre><code>
@@ -5145,7 +5145,7 @@ Shoes.app :title =&gt; "My awesome application" do
   end
   background periwinkle
 
-  animate do 
+  animate do
     <span class="changedcode">previous_left = @left
     previous_top = @top</span>
     @button, @left, @top = self.mouse
@@ -5156,25 +5156,25 @@ Shoes.app :title =&gt; "My awesome application" do
   end
 
   @headline = para "Draw!",
-    :align =&gt; "center", 
-    :size =&gt; "xx-large", 
+    :align =&gt; "center",
+    :size =&gt; "xx-large",
     :stroke =&gt; saddlebrown
 end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-32" class="content">
               <p><img src="img/step11.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-33" class="content">
               <pre><code>
   # ...
-  animate do 
+  animate do
     # ...
   end
 
@@ -5182,27 +5182,27 @@ end
     background periwinkle
     @headline.remove
     @headline = para "Draw!",
-      :align =&gt; "center", 
-      :size =&gt; "xx-large", 
+      :align =&gt; "center",
+      :size =&gt; "xx-large",
       :stroke =&gt; saddlebrown
   end</span>
 
   @headline = para "Draw!",
-    :align =&gt; "center", 
-    :size =&gt; "xx-large", 
+    :align =&gt; "center",
+    :size =&gt; "xx-large",
     :stroke =&gt; saddlebrown
 
 end
 </code></pre>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-34" class="content">
               <p><img src="img/step12.png"></p>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-35" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5213,7 +5213,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-36" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5225,7 +5225,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-37" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5237,7 +5237,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-38" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5250,7 +5250,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-39" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5263,7 +5263,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-40" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5277,7 +5277,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-41" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5291,7 +5291,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-42" class="content">
               <h3>Why was it successful?</h3><ul>
@@ -5306,7 +5306,7 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-43" class="content">
               <h3>So...what about younger kids?</h3><ul>
@@ -5317,19 +5317,19 @@ end
 </ul>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-44" class="content">
               <h3>Acknowledgements</h3><h5>&nbsp;</h5><h5>Screenshots - Satoshi Asakawa (@ashbb)</h5><h5>GetSET - www.getset.org</h5><h5>RailsBridge - teachingkids.railsbridge.org</h5><h5>Slidedown - Pat Nakajima (@nakajima)</h5>
             </div>
           </div>
-        
+
           <div class="">
             <div id="slide-45" class="content">
               <h3>Thank you!</h3><h5>&nbsp;</h5><h5>github.com/sarahmei/rubyconf09</h5><h5>&nbsp;</h5><h5>sarahmei@gmail.com</h5><h5>@sarahmei</h5>
             </div>
           </div>
-        
+
       </div>
     </div>
   </body>
